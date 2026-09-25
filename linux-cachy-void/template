@@ -1,0 +1,20 @@
+pkgname=linux-cachy-void
+version=7.3
+revision=9
+short_desc="Cachyos kernel precompiled for Void Linux + headers"
+maintainer="JavierC"
+license="GPL-2.0-only"
+homepage="https://github.com/javiercplus/kernel-neko-void/"
+distfiles="https://github.com/Neko-Void-Linux/kernel-neko-void/releases/download/latest/neko-kernel-void-7.3.0-cachy-bore+.tar.gz"
+checksum="d1c0e44f684393be1ac7c4b99c6142e6d2a0db039d6d34656893a68977fed2c5"
+create_wrksrc=yes
+triggers="kernel-hooks"
+kernel_hooks_version="7.3.0-cachy-bore+"
+do_install() {
+    vmkdir boot
+    vmkdir usr/lib/modules
+    vmkdir usr/src
+    cp -a boot/* ${DESTDIR}/boot/
+    cp -a lib/modules/* ${DESTDIR}/usr/lib/modules/
+    cp -a usr/src/* ${DESTDIR}/usr/src/
+}
